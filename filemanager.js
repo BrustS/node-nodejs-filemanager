@@ -6,6 +6,10 @@ import { commandLs } from './src/commands/command_ls.js';
 import { commandCat } from './src/commands/command_cat.js';
 import { commandAdd } from './src/commands/command_add.js';
 import { commandRm } from './src/commands/command_rm.js';
+import { commandMkdir } from './src/commands/command_mkdir.js';
+import { commandRn } from './src/commands/command_rn.js';
+import { commandCp } from './src/commands/command_cp.js';
+import { commandMv } from './src/commands/command_mv.js';
 
 const readLine  = readline.createInterface( {
     input: process.stdin,
@@ -26,6 +30,10 @@ readLine.on('line', async (input) => {
             case input.startsWith('cat') : {await commandCat(input.slice(4).trim()); break; }
             case input.startsWith('add') : {await commandAdd(input.slice(4).trim()); break; }
             case input.startsWith('rm') : { await commandRm(input.slice(3).trim()); break; }
+            case input.startsWith('mkdir') : { await commandMkdir(input.slice(6).trim()); break; }
+            case input.startsWith('rn') : { await commandRn(input.slice(3).trim()); break; }
+            case input.startsWith('cp') : { await commandCp(input.slice(3).trim()); break; }
+            case input.startsWith('mv') : { await commandMv(input.slice(3).trim()); break; }
             case input === '.exit' : { readLine.close();
                 process.exit(0);
                 break;}
