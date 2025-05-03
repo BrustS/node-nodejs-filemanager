@@ -10,6 +10,10 @@ import { commandMkdir } from './src/commands/command_mkdir.js';
 import { commandRn } from './src/commands/command_rn.js';
 import { commandCp } from './src/commands/command_cp.js';
 import { commandMv } from './src/commands/command_mv.js';
+import { commandOs } from './src/commands/command_os.js';
+import { commandHash } from './src/commands/command_hash.js';
+import { commandCompress } from './src/commands/command_compress.js';
+import { commandDecompress } from './src/commands/command_decompress.js';
 
 const readLine  = readline.createInterface( {
     input: process.stdin,
@@ -34,6 +38,10 @@ readLine.on('line', async (input) => {
             case input.startsWith('rn') : { await commandRn(input.slice(3).trim()); break; }
             case input.startsWith('cp') : { await commandCp(input.slice(3).trim()); break; }
             case input.startsWith('mv') : { await commandMv(input.slice(3).trim()); break; }
+            case input.startsWith('os') : { await commandOs(input.slice(3).trim()); break; }
+            case input.startsWith('hash') : { await commandHash(input.slice(5).trim()); break; }
+            case input.startsWith('compress') : { await commandCompress(input.slice(9).trim()); break; }
+            case input.startsWith('decompress') : { await commandDecompress(input.slice(11).trim()); break; }
             case input === '.exit' : { readLine.close();
                 process.exit(0);
                 break;}
